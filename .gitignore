@@ -1,0 +1,39 @@
+# Root .gitignore for Hosted-Google
+
+# Environments
+.env
+backend/.env
+frontend/.env
+*.local
+
+# Dependencies
+node_modules/
+backend/venv/
+backend/__pycache__/
+
+# Firebase Credentials
+backend/service-account.json
+
+# Build outputs
+dist/
+dist-ssr/
+frontend/dist/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
