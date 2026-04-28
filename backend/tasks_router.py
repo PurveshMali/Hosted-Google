@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from typing import List, Optional
 import uuid
@@ -7,7 +7,6 @@ from datetime import datetime, timezone
 from firebase_config import db
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from security import decode_access_token
-from ai_service import suggest_task_fields
 
 router = APIRouter(prefix="/api/tasks", tags=["Volunteer Tasks"])
 security = HTTPBearer()

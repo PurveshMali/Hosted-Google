@@ -3,8 +3,8 @@ import secrets
 import string
 import random
 from datetime import datetime, timedelta, timezone
-from typing import Optional, Tuple
-from jose import JWTError, jwt
+from typing import Tuple
+from jose import jwt
 from passlib.context import CryptContext
 import os
 from dotenv import load_dotenv

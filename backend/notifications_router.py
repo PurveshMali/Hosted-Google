@@ -1,7 +1,4 @@
 from fastapi import APIRouter, HTTPException, Depends
-from pydantic import BaseModel
-from typing import List, Optional
-from datetime import datetime, timezone
 from firebase_config import db
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from security import decode_access_token

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import api from '../../lib/api';
 import { useAuthStore } from '../../store/authStore';
-import { LogIn, ArrowRight, Chrome, ShieldAlert } from 'lucide-react';
-import toast from 'react-hot-toast';
+import { LogIn, Chrome, ShieldAlert } from 'lucide-react';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -12,7 +11,6 @@ const Login: React.FC = () => {
   const [error, setError] = useState('');
   
   const navigate = useNavigate();
-  const location = useLocation();
   const login = useAuthStore((state) => state.login);
 
   const handleLogin = async (e: React.FormEvent) => {

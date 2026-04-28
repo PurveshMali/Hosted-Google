@@ -1,7 +1,6 @@
-import os
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import Optional
 import uuid
 from datetime import datetime, timezone
 from firebase_config import db

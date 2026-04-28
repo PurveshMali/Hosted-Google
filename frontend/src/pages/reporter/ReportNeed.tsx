@@ -5,11 +5,9 @@ import {
   Camera, 
   Loader2, 
   CheckCircle2, 
-  AlertTriangle,
   Sparkles,
   X
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import api from '../../lib/api';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -30,7 +28,6 @@ export const ReportNeed: React.FC = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
   const { user } = useAuthStore();
 
   useEffect(() => {

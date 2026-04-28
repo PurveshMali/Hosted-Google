@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { 
   ShieldCheck, Heart, UserCircle, 
   ArrowRight, CheckCircle2, MapPin, 
-  Settings, Loader2 
+  Loader2 
 } from 'lucide-react';
 
 type Tab = 'ngo' | 'volunteer' | 'community';

@@ -3,7 +3,7 @@ import { Sidebar } from '../../components/ngo/Sidebar';
 import { Header } from '../../components/ngo/Header';
 import { StatsGrid } from '../../components/ngo/StatsGrid';
 import { NeedCard } from '../../components/ngo/NeedCard';
-import { Map as MapIcon, Filter, Layers, Loader2, ClipboardCheck, CheckCircle, ExternalLink } from 'lucide-react';
+import { Map as MapIcon, Loader2, ClipboardCheck, CheckCircle, ExternalLink } from 'lucide-react';
 import { TaskConversionModal } from '../../components/ngo/TaskConversionModal';
 import api from '../../lib/api';
 import toast from 'react-hot-toast';

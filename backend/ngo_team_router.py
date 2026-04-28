@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks
 from pydantic import BaseModel, EmailStr
-from typing import List, Optional
+from typing import Optional
 import uuid
 from datetime import datetime, timezone
 from security import hash_password, generate_temp_password, decode_access_token

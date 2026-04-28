@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Depends, Request, Response, Cookie
+from fastapi import APIRouter, HTTPException, Request, Response, Cookie
 from pydantic import BaseModel, EmailStr
 from typing import List, Optional
 import uuid
@@ -6,9 +6,9 @@ import secrets
 from datetime import datetime, timedelta, timezone
 from security import (
     hash_password, verify_password, create_access_token, 
-    create_refresh_token, hash_token, generate_temp_password
+    create_refresh_token, hash_token
 )
-from firebase_config import db, auth_admin
+from firebase_config import db
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
