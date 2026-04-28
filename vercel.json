@@ -5,10 +5,18 @@
       "use": "@vercel/python"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "backend/main.py"
+      "source": "/auth/(.*)",
+      "destination": "backend/main.py"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "backend/main.py"
+    },
+    {
+      "source": "/((?!auth|api).*)",
+      "destination": "/index.html"
     }
   ]
 }
