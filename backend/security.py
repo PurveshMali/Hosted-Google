@@ -20,12 +20,14 @@ REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "7"))
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def hash_password(password: str) -> str:
-    """Hashes a plain-text password using bcrypt."""
-    return pwd_context.hash(password)
+    """Hashes a plain-text password. Pre-hashed with SHA-256 to bypass bcrypt's 72-byte limit."""
+    pre_hashed = hashlib.sha256(password.encode()).hexdigest()
+    return pwd_context.hash(pre_hashed)
 
 def verify_password(plain: str, hashed: str) -> bool:
-    """Verifies a plain-text password against a hashed version."""
-    return pwd_context.verify(plain, hashed)
+    """Verifies a plain-text password. Pre-hashed with SHA-256 to bypass bcrypt's 72-byte limit."""
+    pre_hashed = hashlib.sha256(plain.encode()).hexdigest()
+    return pwd_context.verify(pre_hashed, hashed)
 
 def create_access_token(data: dict) -> str:
     """
