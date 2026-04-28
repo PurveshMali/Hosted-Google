@@ -56,7 +56,10 @@ async def safety_shield_middleware(request: Request, call_next):
             )
 
     # Force CORS headers on EVERY response
-    target_origin = origin if origin in origins else "http://localhost:5173"
+    # Dynamically allow vercel.app domains for frontend deployment
+    is_allowed = origin and (origin in origins or origin.endswith(".vercel.app"))
+    target_origin = origin if is_allowed else "http://localhost:5173"
+    
     response.headers["Access-Control-Allow-Origin"] = target_origin
     response.headers["Access-Control-Allow-Credentials"] = "true"
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS, PATCH"
