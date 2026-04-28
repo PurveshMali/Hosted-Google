@@ -22,51 +22,33 @@ origins = [
     "http://127.0.0.1:5173",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://vercel.com/purvesh-malis-projects/hosted-google-g3ii/6gSwt3XsYBwTx6kf4KzSMkHrkFBY",
+    "https://hosted-google-g3ii-pl5fp6vwj-purvesh-malis-projects.vercel.app/",
 ]
 
-# We still keep the middleware, but we'll add the manual override below for safety
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
     expose_headers=["*"],
 )
 
-# Nuclear CORS & Error Handling Middleware
+# Global Error Handling Middleware
 @app.middleware("http")
-async def safety_shield_middleware(request: Request, call_next):
-    origin = request.headers.get("origin")
-    
-    # Handle OPTIONS requests (pre-flight)
-    if request.method == "OPTIONS":
-        response = Response()
-    else:
-        try:
-            print(f"DEBUG: {request.method} {request.url.path}")
-            response = await call_next(request)
-        except Exception as e:
-            print(f"❌ CRITICAL ERROR: {str(e)}")
-            import traceback
-            traceback.print_exc()
-            response = JSONResponse(
-                status_code=500,
-                content={"detail": "Internal Server Error", "error": str(e)}
-            )
-
-    # Force CORS headers on EVERY response
-    # Dynamically allow vercel.app domains for frontend deployment
-    is_allowed = origin and (origin in origins or origin.endswith(".vercel.app"))
-    target_origin = origin if is_allowed else "http://localhost:5173"
-    
-    response.headers["Access-Control-Allow-Origin"] = target_origin
-    response.headers["Access-Control-Allow-Credentials"] = "true"
-    response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS, PATCH"
-    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization, Accept, X-Requested-With"
-    
-    return response
+async def error_handling_middleware(request: Request, call_next):
+    try:
+        print(f"DEBUG: {request.method} {request.url.path}")
+        return await call_next(request)
+    except Exception as e:
+        print(f"❌ CRITICAL ERROR: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return JSONResponse(
+            status_code=500,
+            content={"detail": "Internal Server Error", "error": str(e)}
+        )
 
 # Include Routers
 app.include_router(auth_router)
