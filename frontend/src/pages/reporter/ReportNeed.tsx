@@ -211,6 +211,7 @@ export const ReportNeed: React.FC = () => {
             {isSubmitting ? 'Transmitting...' : 'Transmit Official Report'}
           </button>
         </form>
+      </main>
       <MobileNav />
     </div>
   );
