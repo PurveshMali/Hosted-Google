@@ -17,22 +17,17 @@ load_dotenv()
 app = FastAPI(title="CommunityPulse API")
 
 # CORS Configuration
-origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://hosted-google-git-main-purvesh-malis-projects.vercel.app",
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[
+        "http://localhost:5173",
+        "https://hosted-google-git-main-purvesh-malis-projects.vercel.app",
+        "https://hosted-google-g3ii.vercel.app"
+    ],
     allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-    expose_headers=["*"],
 )
 
 # Global Error Handling Middleware
