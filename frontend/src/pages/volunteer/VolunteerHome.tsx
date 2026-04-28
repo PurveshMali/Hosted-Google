@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MapPin, Zap, Clock, ShieldCheck, LogOut, Loader2, Camera, Send, X, CheckCircle } from 'lucide-react';
+import { MapPin, Zap, Clock, ShieldCheck, Loader2, Camera, Send, X, CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../lib/api';
 import axios from 'axios';
@@ -32,11 +32,6 @@ export const VolunteerHome: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { user, logout } = useAuthStore();
 
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-    toast.success("Logged out successfully");
-  };
 
   const fetchTasks = async () => {
     try {
