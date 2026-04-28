@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, Zap, Clock, ShieldCheck, Loader2, Camera, Send, X, CheckCircle } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import api from '../../lib/api';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -28,9 +27,8 @@ export const VolunteerHome: React.FC = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [isSubmittingProof, setIsSubmittingProof] = useState(false);
 
-  const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { user, logout } = useAuthStore();
+  const { user } = useAuthStore();
 
 
   const fetchTasks = async () => {
