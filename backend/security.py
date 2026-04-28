@@ -17,18 +17,17 @@ JWT_ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "15"))
 REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "7"))
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 
 def hash_password(password: str) -> str:
-    """Hashes a plain-text password. Pre-hashed with SHA-256 to bypass bcrypt's 72-byte limit."""
-    # We use a 32-character prefix of the hash to be safely under the 72-byte limit
-    pre_hashed = hashlib.sha256(password.encode()).hexdigest()[:32]
-    return pwd_context.hash(pre_hashed)
+    """Hashes a plain-text password using PBKDF2-SHA256 (no length limit)."""
+    print(f"DEBUG: Hashing password of length {len(password)}")
+    return pwd_context.hash(password)
 
 def verify_password(plain: str, hashed: str) -> bool:
-    """Verifies a plain-text password. Pre-hashed with SHA-256 to bypass bcrypt's 72-byte limit."""
-    pre_hashed = hashlib.sha256(plain.encode()).hexdigest()[:32]
-    return pwd_context.verify(pre_hashed, hashed)
+    """Verifies a plain-text password using PBKDF2-SHA256."""
+    print(f"DEBUG: Verifying password of length {len(plain)}")
+    return pwd_context.verify(plain, hashed)
 
 def create_access_token(data: dict) -> str:
     """
