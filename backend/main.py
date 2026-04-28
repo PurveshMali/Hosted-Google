@@ -22,7 +22,7 @@ origins = [
     "http://127.0.0.1:5173",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://hosted-google-g3ii-pl5fp6vwj-purvesh-malis-projects.vercel.app/",
+    "https://hosted-google-git-main-purvesh-malis-projects.vercel.app",
 ]
 
 app.add_middleware(
