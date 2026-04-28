@@ -13,6 +13,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useAuthStore } from '../../store/authStore';
 import { Header } from '../../components/ngo/Header';
+import { MobileNav } from '../../components/MobileNav';
 
 export const ReportNeed: React.FC = () => {
   const [description, setDescription] = useState('');
@@ -117,10 +118,10 @@ export const ReportNeed: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 flex flex-col pb-20 lg:pb-0">
       <Header />
 
-      <main className="flex-1 p-6 max-w-2xl mx-auto w-full">
+      <main className="flex-1 p-4 lg:p-6 max-w-2xl mx-auto w-full">
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900">Report Ground Need</h2>
           <p className="text-sm text-gray-500 mt-1 uppercase tracking-widest font-bold">Field Intelligence Portal</p>
@@ -210,7 +211,7 @@ export const ReportNeed: React.FC = () => {
             {isSubmitting ? 'Transmitting...' : 'Transmit Official Report'}
           </button>
         </form>
-      </main>
+      <MobileNav />
     </div>
   );
 };

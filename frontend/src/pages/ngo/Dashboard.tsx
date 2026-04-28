@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Sidebar } from '../../components/ngo/Sidebar';
 import { Header } from '../../components/ngo/Header';
+import { MobileNav } from '../../components/MobileNav';
 import { StatsGrid } from '../../components/ngo/StatsGrid';
 import { NeedCard } from '../../components/ngo/NeedCard';
 import { Map as MapIcon, Loader2, ClipboardCheck, CheckCircle, ExternalLink } from 'lucide-react';
@@ -79,10 +80,10 @@ const Dashboard: React.FC = () => {
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
       
-      <main className="flex-1 ml-64">
+      <main className="flex-1 lg:ml-64 mb-20 lg:mb-0">
         <Header />
         
-        <div className="p-8 space-y-8">
+        <div className="p-4 lg:p-8 space-y-8">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Strategic Overview</h1>
             <p className="text-gray-500 mt-1">Real-time crisis monitoring and resource coordination.</p>
@@ -90,10 +91,10 @@ const Dashboard: React.FC = () => {
 
           <StatsGrid />
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="lg:col-span-2 space-y-6 lg:space-y-8">
               {/* Map Section */}
-              <div className="bg-white border border-gray-200 h-[500px] relative overflow-hidden flex flex-col shadow-sm">
+              <div className="bg-white border border-gray-200 h-[350px] lg:h-[500px] relative overflow-hidden flex flex-col shadow-sm">
                 <div className="p-4 border-b border-gray-200 flex items-center justify-between">
                   <h3 className="font-bold text-gray-900 flex items-center gap-2 uppercase tracking-widest text-xs">
                     <MapIcon className="w-4 h-4 text-primary-600" />
@@ -188,6 +189,7 @@ const Dashboard: React.FC = () => {
         </div>
 
         <TaskConversionModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} reportData={selectedReport} onRefresh={fetchData} />
+        <MobileNav />
       </main>
     </div>
   );

@@ -45,16 +45,21 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 sticky top-0 z-50 shadow-sm">
-      <div className="flex-1 max-w-xl">
+    <header className="h-16 bg-white/80 backdrop-blur-md border-b border-gray-200 flex items-center justify-between px-4 lg:px-8 sticky top-0 z-50 shadow-sm">
+      <div className="flex-1 max-w-xl hidden md:block">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
             type="text"
-            placeholder="Search intelligence, tasks, or personnel..."
+            placeholder="Search intelligence..."
             className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-none text-sm focus:outline-none focus:border-primary-500 transition-colors"
           />
         </div>
+      </div>
+
+      <div className="flex items-center gap-2 lg:hidden">
+        <div className="w-8 h-8 bg-primary-600 flex items-center justify-center text-white font-black text-sm">CP</div>
+        <span className="font-bold text-gray-900 tracking-tighter">CommunityPulse</span>
       </div>
       
       <div className="flex items-center gap-6">

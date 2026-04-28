@@ -57,9 +57,9 @@ export const StatsGrid: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="bg-white border border-gray-200 p-6 flex items-center justify-center h-32">
+          <div key={i} className="bg-white border border-gray-200 p-4 lg:p-6 flex items-center justify-center h-24 lg:h-32 rounded-2xl">
             <Loader2 className="w-6 h-6 text-gray-200 animate-spin" />
           </div>
         ))}
@@ -68,9 +68,9 @@ export const StatsGrid: React.FC = () => {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
       {stats.map((stat) => (
-        <div key={stat.label} className="bg-white border border-gray-200 p-6 rounded-none shadow-sm hover:border-primary-200 transition-all">
+        <div key={stat.label} className="bg-white border border-gray-200 p-4 lg:p-6 rounded-2xl shadow-sm hover:border-primary-200 transition-all active:scale-95">
           <div className="flex items-start justify-between">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{stat.label}</p>

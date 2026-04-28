@@ -5,6 +5,8 @@ import api from '../../lib/api';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useAuthStore } from '../../store/authStore';
+import { Header } from '../../components/ngo/Header';
+import { MobileNav } from '../../components/MobileNav';
 
 interface Task {
   id: string;
@@ -103,23 +105,13 @@ export const VolunteerHome: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      <header className="bg-white border-b border-gray-200 p-4 sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center justify-between max-w-lg mx-auto w-full">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary-600 flex items-center justify-center text-white font-bold text-xs">CP</div>
-            <h1 className="text-lg font-bold text-gray-900">Volunteer</h1>
-          </div>
-          <button onClick={handleLogout} className="p-2 text-gray-400 hover:text-red-500 transition-colors">
-            <LogOut className="w-5 h-5" />
-          </button>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gray-50 flex flex-col pb-20 lg:pb-0">
+      <Header />
 
-      <main className="flex-1 p-4 max-w-lg mx-auto w-full space-y-6">
+      <main className="flex-1 p-4 lg:p-6 max-w-lg mx-auto w-full space-y-6">
         {/* Active Task Management */}
         {activeTaskId && (
-          <div className="bg-primary-900 text-white p-6 rounded-none shadow-xl border-l-4 border-cyan-400">
+          <div className="bg-primary-900 text-white p-6 rounded-2xl shadow-xl border-l-4 border-l-cyan-400 overflow-hidden">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-bold uppercase tracking-widest text-cyan-300">Active Mission</h3>
               <Clock className="w-4 h-4 text-cyan-300 animate-pulse" />
@@ -177,7 +169,7 @@ export const VolunteerHome: React.FC = () => {
             tasks.map((task) => (
               <div 
                 key={task.id} 
-                className={`bg-white border ${task.accepted ? 'border-primary-200 bg-primary-50/20' : 'border-gray-200'} p-5 rounded-none relative overflow-hidden shadow-sm transition-all`}
+                className={`bg-white border ${task.accepted ? 'border-primary-200 bg-primary-50/20' : 'border-gray-200'} p-5 rounded-2xl relative overflow-hidden shadow-sm transition-all active:scale-[0.98]`}
               >
                 {!task.accepted && (
                   <div className="absolute top-0 right-0">
@@ -228,7 +220,7 @@ export const VolunteerHome: React.FC = () => {
           )}
         </div>
 
-        <div className="p-6 bg-primary-900 text-white shadow-xl">
+        <div className="p-6 bg-primary-900 text-white shadow-xl rounded-2xl">
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-xs font-bold uppercase tracking-widest text-primary-300">Community Impact</h4>
             <ShieldCheck className="w-4 h-4 text-primary-300" />
@@ -236,6 +228,7 @@ export const VolunteerHome: React.FC = () => {
           <p className="text-3xl font-bold">{user?.impact_score || '0'}</p>
           <p className="text-xs text-primary-200 mt-1 uppercase tracking-wider">Lives Positively Impacted</p>
         </div>
+        <MobileNav />
       </main>
     </div>
   );

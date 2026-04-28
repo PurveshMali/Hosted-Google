@@ -42,3 +42,12 @@ body {
 .card {
   @apply bg-white border border-gray-200 rounded-none p-4;
 }
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+}
