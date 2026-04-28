@@ -28,7 +28,7 @@ export const ReportNeed: React.FC = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { user } = useAuthStore();
+  useAuthStore();
 
   useEffect(() => {
     if (navigator.geolocation) {

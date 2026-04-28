@@ -15,7 +15,7 @@ const ResetPassword: React.FC = () => {
   const logout = useAuthStore((state) => state.logout);
   
   // Try to get token from location state, or fallback to sessionStorage on refresh
-  const [resetData, setResetData] = useState<{reset_token?: string, user_id?: string}>(() => {
+  const [resetData] = useState<{reset_token?: string, user_id?: string}>(() => {
     const stateData = location.state as {reset_token?: string, user_id?: string};
     if (stateData?.reset_token) {
       sessionStorage.setItem('cp_reset_session', JSON.stringify(stateData));

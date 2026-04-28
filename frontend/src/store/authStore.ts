@@ -15,6 +15,7 @@ export interface AuthUser {
   role: UserRole;
   org_id?: string;
   must_reset_password?: boolean;
+  impact_score?: number;
 }
 
 interface AuthState {

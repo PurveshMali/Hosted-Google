@@ -132,10 +132,11 @@ export const VolunteerHome: React.FC = () => {
               {!proofUrl ? (
                 <button 
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full py-3 bg-white/10 border border-white/20 hover:bg-white/20 transition-all flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest"
+                  disabled={isUploading}
+                  className="w-full py-3 bg-white/10 border border-white/20 hover:bg-white/20 transition-all flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest disabled:opacity-50"
                 >
-                  <Camera className="w-4 h-4" />
-                  Take Completion Photo
+                  {isUploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Camera className="w-4 h-4" />}
+                  {isUploading ? 'Uploading...' : 'Take Completion Photo'}
                 </button>
               ) : (
                 <div className="space-y-3">

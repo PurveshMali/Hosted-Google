@@ -14,6 +14,7 @@ interface TaskConversionModalProps {
     latitude: number;
     longitude: number;
   } | null;
+  onRefresh: () => Promise<void>;
 }
 
 export const TaskConversionModal: React.FC<TaskConversionModalProps> = ({ isOpen, onClose, reportData }) => {
