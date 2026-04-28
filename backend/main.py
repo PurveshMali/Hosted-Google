@@ -22,6 +22,7 @@ origins = [
     "http://127.0.0.1:5173",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "https://vercel.com/purvesh-malis-projects/hosted-google-g3ii/6gSwt3XsYBwTx6kf4KzSMkHrkFBY",
 ]
 
 # We still keep the middleware, but we'll add the manual override below for safety
